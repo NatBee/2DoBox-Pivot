@@ -234,3 +234,36 @@ h3.quality-option {
   }
 
 }
+
+@media screen and (max-width: 320px) {
+  .user-input{
+    width: 100%;
+  }
+  .serch-bar{
+    width: 80%;
+  }
+  .todos{
+    width: 100%;
+    margin: 5px 0;
+  }
+  .quality-btn{
+    width: 15%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
