@@ -17,7 +17,7 @@ $('.high-btn').on('click', high);
 $('.normal-btn').on('click', normal);
 $('.low-btn').on('click', low);
 $('.none-btn').on('click', none);
-$('.more-todos').on('click', populateExistingCards(moreToDos()));
+$('.more-todos').on('click', moreToDos);
 
 function taskInputValidation () {
   return (($('#title-input').val() === ('')) && ($('#body-input').val() !== (''))) ? $('#save-button').attr('disabled', true)
@@ -231,115 +231,91 @@ function completeTask () {
 
 function showToDos () {  
   for (var i = 0; i < localStorage.length; i++) {
-  var retrievedObject = localStorage.getItem(localStorage.key(i));
-  var parsedObject = JSON.parse(retrievedObject);
- 
-  if (parsedObject.completed === true) {
-    var cardId = parsedObject.id;
-    $('#task-card-storage').prepend($(`#${cardId}:hidden`).show());
-    $(`#${cardId}`).closest(".task-card").toggleClass("greyed-out");
+    var retrievedObject = localStorage.getItem(localStorage.key(i));
+    var parsedObject = JSON.parse(retrievedObject);
+    if (parsedObject.completed === true) {
+      var cardId = parsedObject.id;
+      $('#task-card-storage').prepend($(`#${cardId}:hidden`).show());
+      $(`#${cardId}`).closest(".task-card").toggleClass("greyed-out");
+    }
   }
-}
 }
 
 function critical() {
   for (var i = 0; i < localStorage.length; i++) {
-  var retrievedObject = localStorage.getItem(localStorage.key(i));
-  var parsedObject = JSON.parse(retrievedObject);
-  var cardId = parsedObject.id;
-
-  if (parsedObject.quality == "Critical") {
-    $('#task-card-storage').prepend($(`#${cardId}`).show());
-    
-  } else {
-    $('#task-card-storage').prepend($(`#${cardId}`).hide());
+    var retrievedObject = localStorage.getItem(localStorage.key(i));
+    var parsedObject = JSON.parse(retrievedObject);
+    var cardId = parsedObject.id;
+    if (parsedObject.quality == "Critical") {
+      $('#task-card-storage').prepend($(`#${cardId}`).show());
+    } 
+    else {
+      $('#task-card-storage').prepend($(`#${cardId}`).hide());
+    }
   }
-}
 }
 
 function high() {
   for (var i = 0; i < localStorage.length; i++) {
-  var retrievedObject = localStorage.getItem(localStorage.key(i));
-  var parsedObject = JSON.parse(retrievedObject);
-  var cardId = parsedObject.id;
-
-  if (parsedObject.quality == "High") {
-    $('#task-card-storage').prepend($(`#${cardId}`).show());
-    
-  } else {
-    $('#task-card-storage').prepend($(`#${cardId}`).hide());
+    var retrievedObject = localStorage.getItem(localStorage.key(i));
+    var parsedObject = JSON.parse(retrievedObject);
+    var cardId = parsedObject.id;
+    if (parsedObject.quality == "High") {
+      $('#task-card-storage').prepend($(`#${cardId}`).show());
+    } 
+    else {
+      $('#task-card-storage').prepend($(`#${cardId}`).hide());
+    }
   }
-}
 }
 
 function normal() {
   for (var i = 0; i < localStorage.length; i++) {
-  var retrievedObject = localStorage.getItem(localStorage.key(i));
-  var parsedObject = JSON.parse(retrievedObject);
-  var cardId = parsedObject.id;
-
-  if (parsedObject.quality == "Normal") {
-    $('#task-card-storage').prepend($(`#${cardId}`).show());
-    
-  } else {
-    $('#task-card-storage').prepend($(`#${cardId}`).hide());
+    var retrievedObject = localStorage.getItem(localStorage.key(i));
+    var parsedObject = JSON.parse(retrievedObject);
+    var cardId = parsedObject.id;
+    if (parsedObject.quality == "Normal") {
+      $('#task-card-storage').prepend($(`#${cardId}`).show());
+    } 
+    else {
+      $('#task-card-storage').prepend($(`#${cardId}`).hide());
+    }
   }
-}
 }
 
 function low() {
   for (var i = 0; i < localStorage.length; i++) {
-  var retrievedObject = localStorage.getItem(localStorage.key(i));
-  var parsedObject = JSON.parse(retrievedObject);
-  var cardId = parsedObject.id;
-
-  if (parsedObject.quality == "Low") {
-    $('#task-card-storage').prepend($(`#${cardId}`).show());
-    
-  } else {
-    $('#task-card-storage').prepend($(`#${cardId}`).hide());
+    var retrievedObject = localStorage.getItem(localStorage.key(i));
+    var parsedObject = JSON.parse(retrievedObject);
+    var cardId = parsedObject.id;
+    if (parsedObject.quality == "Low") {
+      $('#task-card-storage').prepend($(`#${cardId}`).show());
+    } 
+    else {
+      $('#task-card-storage').prepend($(`#${cardId}`).hide());
+    }
   }
-}
 }
 
 function none() {
   for (var i = 0; i < localStorage.length; i++) {
-  var retrievedObject = localStorage.getItem(localStorage.key(i));
-  var parsedObject = JSON.parse(retrievedObject);
-  var cardId = parsedObject.id;
-
-  if (parsedObject.quality == "None") {
-    $('#task-card-storage').prepend($(`#${cardId}`).show());
-    
-  } else {
-    $('#task-card-storage').prepend($(`#${cardId}`).hide());
+    var retrievedObject = localStorage.getItem(localStorage.key(i));
+    var parsedObject = JSON.parse(retrievedObject);
+    var cardId = parsedObject.id;
+    if (parsedObject.quality == "None") {
+      $('#task-card-storage').prepend($(`#${cardId}`).show());
+    } 
+    else {
+      $('#task-card-storage').prepend($(`#${cardId}`).hide());
+    }
   }
-}
 }
 
 function moreToDos() {
-  var keyValues = [];
-  var keys = Object.keys(localStorage).slice(0, -11)
-
+  var otherKeyValues = [];
+  var keys = Object.keys(localStorage).slice(0, -10);
   for (var i = 0; i < keys.length; i++) {
-    keyValues.push(JSON.parse(localStorage.getItem(keys[i])));
+    otherKeyValues.push(JSON.parse(localStorage.getItem(keys[i])));
   }
-  return keyValues;
+  populateExistingCards(otherKeyValues);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
