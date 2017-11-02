@@ -84,17 +84,17 @@ function completedTaskView(id, complete) {
 
 function prependTaskCard(id, title, body, quality, completed) {
   $('#task-card-storage').prepend(
-    `<article class='task-card' id='${id}'>
-      <div class='card-header'>
-        <h2 class='card-title' contenteditable='true'>${title}</h2> 
-        <button class='delete-button button' name='delete button'><img src='FEE-taskbox-icon-assets/transparent.png' width='30px' height='30px'></button>
+    `<article class="task-card" id="${id}">
+      <div class="card-header">
+        <h2 class="card-title" contenteditable="true">${title}</h2> 
+        <button class="delete-button button" name="delete button"><img src="FEE-taskbox-icon-assets/transparent.png" width="30px" height="30px"></button>
       </div>
-      <p class='card-body' contenteditable='true'>${body}</p>
-      <div class='card-footer'>
-        <button class='upvote-button button' name='upvote button'></button>
-        <button class='downvote-button button' name='downvote button'></button>
-        <h3 class='quality-option'>${quality}</h3>
-        <button class='complete-btn' name='complete button'>Completed Task</button>
+      <p class="card-body" contenteditable="true">${body}</p>
+      <div class="card-footer">
+        <button class="upvote-button button" name="upvote button"></button>
+        <button class="downvote-button button" name="downvote button"></button>
+        <h3 class="quality-option">${quality}</h3>
+        <button class="complete-btn" name="complete button">Completed Task</button>
       </div>
     </article>`
   );
@@ -224,7 +224,7 @@ function completeTask () {
   var cardObject = getObjectFromStorage(cardId);
   cardObject.completed = this.completed;
   if (cardObject.completed === true) {
-    $(this).closest('.task-card').toggleClass('greyed-out');
+    $(this).closest(".task-card").toggleClass("greyed-out");
   }
   sendUpdatesToLocalStorage(cardObject);
 }
@@ -236,7 +236,7 @@ function showToDos () {
     if (parsedObject.completed === true) {
       var cardId = parsedObject.id;
       $('#task-card-storage').prepend($(`#${cardId}:hidden`).show());
-      $(`#${cardId}`).closest('.task-card').toggleClass('greyed-out');
+      $(`#${cardId}`).closest(".task-card").toggleClass("greyed-out");
     }
   }
 }
@@ -246,7 +246,7 @@ function critical() {
     var retrievedObject = localStorage.getItem(localStorage.key(i));
     var parsedObject = JSON.parse(retrievedObject);
     var cardId = parsedObject.id;
-    if (parsedObject.quality == 'Critical') {
+    if (parsedObject.quality == "Critical") {
       $('#task-card-storage').prepend($(`#${cardId}`).show());
     } 
     else {
@@ -260,7 +260,7 @@ function high() {
     var retrievedObject = localStorage.getItem(localStorage.key(i));
     var parsedObject = JSON.parse(retrievedObject);
     var cardId = parsedObject.id;
-    if (parsedObject.quality == 'High') {
+    if (parsedObject.quality == "High") {
       $('#task-card-storage').prepend($(`#${cardId}`).show());
     } 
     else {
@@ -274,7 +274,7 @@ function normal() {
     var retrievedObject = localStorage.getItem(localStorage.key(i));
     var parsedObject = JSON.parse(retrievedObject);
     var cardId = parsedObject.id;
-    if (parsedObject.quality == 'Normal') {
+    if (parsedObject.quality == "Normal") {
       $('#task-card-storage').prepend($(`#${cardId}`).show());
     } 
     else {
@@ -288,7 +288,7 @@ function low() {
     var retrievedObject = localStorage.getItem(localStorage.key(i));
     var parsedObject = JSON.parse(retrievedObject);
     var cardId = parsedObject.id;
-    if (parsedObject.quality == 'Low') {
+    if (parsedObject.quality == "Low") {
       $('#task-card-storage').prepend($(`#${cardId}`).show());
     } 
     else {
@@ -302,7 +302,7 @@ function none() {
     var retrievedObject = localStorage.getItem(localStorage.key(i));
     var parsedObject = JSON.parse(retrievedObject);
     var cardId = parsedObject.id;
-    if (parsedObject.quality == 'None') {
+    if (parsedObject.quality == "None") {
       $('#task-card-storage').prepend($(`#${cardId}`).show());
     } 
     else {
