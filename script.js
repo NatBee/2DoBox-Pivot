@@ -17,7 +17,7 @@ $('.high-btn').on('click', high);
 $('.normal-btn').on('click', normal);
 $('.low-btn').on('click', low);
 $('.none-btn').on('click', none);
-$('.more-todos').on('click', populateExistingCards(moreToDos()));
+$('.more-todos').on('click', moreToDos);
 
 function taskInputValidation () {
   return (($('#title-input').val() === ('')) && ($('#body-input').val() !== (''))) ? $('#save-button').attr('disabled', true)
@@ -318,13 +318,14 @@ function none() {
 }
 
 function moreToDos() {
-  var keyValues = [];
-  var keys = Object.keys(localStorage).slice(0, -11)
+  
+  var otherKeyValues = [];
+  var keys = Object.keys(localStorage).slice(0, -10);
 
   for (var i = 0; i < keys.length; i++) {
-    keyValues.push(JSON.parse(localStorage.getItem(keys[i])));
+    otherKeyValues.push(JSON.parse(localStorage.getItem(keys[i])));
   }
-  return keyValues;
+  populateExistingCards(otherKeyValues);
 }
 
 
